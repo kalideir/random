@@ -1,0 +1,91 @@
+<html>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      background-color: #121212;
+      margin-top: 1rem;
+    }
+    #transcript-container {
+        height: 70vh;
+        width: 70vh;
+      padding: 1rem;
+      background-color: #222;
+      color: #f8f8f8;
+      margin-top: 1rem;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #circle {
+        width: 50%;
+        height: 50%;
+        border-radius: 50%;
+        background-color: lightseagreen;
+        position: relative;
+    }
+
+    #circle:hover .dot {
+        /*visibility: visible;*/
+    }
+
+    .dot {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        position: absolute;
+        background-color: black;
+        /*visibility: hidden;*/
+    }
+  
+  </style>
+  <head></head>
+  <body>
+    <div id="transcript-container">
+        <div id="circle"></div>
+    </div>
+  </body>
+
+  <script type="text/javascript" src="transcript.js"></script>
+  <script type="text/javascript">
+    
+    function getXYCoordinates(width, height, angle, dotSize) {
+        console.log(dotSize)
+        const x = Math.round(width / 2 + width / 2 * Math.cos(angle) - dotSize / 2);
+        const y = Math.round(height / 2 + width / 2 * Math.sin(angle) - dotSize / 2);
+        const res = [x, y];
+        res.x = x;
+        res.y = y;
+        return res;
+    }
+
+    const circle = document.getElementById("circle");
+    const NUMBER_OF_ELEMENTS = 22;
+    const width = circle.offsetWidth,
+          height = circle.offsetHeight,
+          radius = width / 2,
+          step = (2 * Math.PI) / NUMBER_OF_ELEMENTS;
+
+          
+    let angle = 0;
+
+    for (let i=0; i < NUMBER_OF_ELEMENTS; i++) {
+        const dot = document.createElement("div");
+        
+        dot.className = "dot";
+        
+        const res = getXYCoordinates(width, height, angle, 20); // dot size should be identical to the width & height of the dot element (here 20px)
+    
+        
+        dot.style = `left: ${res.x}; top: ${res.y}`;
+        circle.appendChild(dot);
+        angle += step;
+    }
+   
+
+  </script>
+</html>
