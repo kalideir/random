@@ -1,1 +1,75 @@
 
+<html>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+      body {
+        background: #101010;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #container {
+        width: 10em;
+        height: 10em;
+        border-radius: 10px;
+        background-color: #222;
+        border: 20px solid white;
+        box-sizing: content-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #f8f8f8;
+        font-size: 2rem;
+        z-index: 1;
+        position: relative;
+        cursor: pointer;
+      }
+
+</style>
+
+<head></head>
+
+<body>
+
+    <div id="container">
+        content
+    </div>
+
+</body>
+
+<script type="text/javascript">
+  
+  const container = document.getElementById("container");
+  
+  console.log(container.getBoundingClientRect(), 'x')
+
+  container.addEventListener("mousemove", function (e) {
+
+
+  y = e.offsetY;
+  x = e.offsetX;
+
+  var bor = 20
+
+  
+  if ((x >= 0 - bor && x<= 0) || (y >= 0 - bor && y <= 0)) {
+    this.style.cursor = "crosshair";
+  }
+  
+  else {
+    this.style.cursor = "pointer";
+  }
+
+  })
+
+</script>
+
+</html>
