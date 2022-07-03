@@ -1,4 +1,3 @@
-
 <html>
 <style>
     * {
@@ -21,7 +20,7 @@
         height: 10em;
         border-radius: 10px;
         background-color: #222;
-        border: 20px solid white;
+        border: 20px solid transparent;
         box-sizing: content-box;
         display: flex;
         align-items: center;
@@ -57,18 +56,26 @@
   y = e.offsetY;
   x = e.offsetX;
 
-  var bor = 20
+  const bor = 20
 
   
   if ((x >= 0 - bor && x<= 0) || (y >= 0 - bor && y <= 0)) {
+
     this.style.cursor = "crosshair";
+    this.style.borderColor = "red";
   }
-  
+
   else {
     this.style.cursor = "pointer";
+    this.style.borderColor = "transparent";
   }
 
   })
+
+  container.addEventListener("mouseleave", function (e) {
+    this.style.borderColor = "transparent";
+  })
+  
 
 </script>
 
